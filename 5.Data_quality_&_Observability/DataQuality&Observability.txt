@@ -1,0 +1,3 @@
+*** IMPORTANTE ***
+
+O código com os exercícios de Data Quality estão na pasta 1.ETL_Maniputacao.
