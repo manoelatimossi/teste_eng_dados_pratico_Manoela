@@ -6,7 +6,7 @@ API_KEY = '0f7fb79e6bf48f664e6adc0f01ff0a49'
 CITY = 'São Paulo'
 
 config_db = {
-    'host': '192.168.1.108',
+    'host': 'xxx.xxx.x.xxx', #Aqui eu utilizei o meu ip para conectar
     'user': 'Manoela',
     'password': '1234',
     'database': 'itau'

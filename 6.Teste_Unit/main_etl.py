@@ -22,7 +22,7 @@ def modifica_moeda (df):
    return df
 if __name__ == "__main__":
     spark = SparkSession.builder.appName("tech_itau").config("spark.jars","/home/manoe/itau/.env/1.ETL_manipulacao/mysql-connector-j-9.2.0.jar").getOrCreate()
-    jdbc_url = "jdbc:mysql://192.168.1.108:3306/itau?useSSL=false&allowPublicKeyRetrieval=true"
+    jdbc_url = "jdbc:mysql://xxx.xxx.x.xxx:3306/itau?useSSL=false&allowPublicKeyRetrieval=true" #aqui tem esse xxx pois eu utilizei o meu ip para conectar pois estava desenvolvendo no wsl. 
     mysql_properties = {
         "user": "Manoela",
         "password": "1234",
