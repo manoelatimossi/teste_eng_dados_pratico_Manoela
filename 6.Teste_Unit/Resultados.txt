@@ -1,0 +1,7 @@
+O primeiro teste executado é um teste de caminho feliz no qual testamos se a nossa função é capaz de limpar linhas duplicadas e fazer
+o tratamento para espaços vazios. O teste passou, logo a função está desempenhando o seu papel de forma correta. 
+
+O segundo e terceiro teste são testes de borda: Um testa o comportamento da função caso haja um dataframe vazio e o outro
+quando não há linhas que precisam de alteração. Ambos passaram. 
+
+O último teste testa o comportamento da função quando passamos um valor vazio na função do dataframe.  
