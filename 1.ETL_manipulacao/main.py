@@ -2,11 +2,13 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col,when
 from data_quality import run_data_quality_checks
 
-def limpeza_dados(df):
-    #limpa as linhas duplicadas
-    df = df.dropDuplicates()
+def dropa_duplicado(df):
+ #limpa os valores duplicados utilizando uma função do próprio spark. 
+ df = df.dropDuplicates()
+
+def trata_dados_ausentes(df):
     # Tratamento de valores ausentes:
-    # Preencher valores ausentes em colunas numéricas com 0 e as sting com vazio
+    # Preencher valores ausentes em colunas numéricas com 0 e as string com vazio
     numeric_columns = [col_name for col_name, data_type in df.dtypes if data_type in ('int', 'double', 'float')]
     for col_name in numeric_columns:
         df = df.fillna(0, subset=[col_name])
@@ -29,11 +31,14 @@ if __name__ == "__main__":
     }
     # Carrega o df
     df = spark.read.csv("sales_data.csv", header=True, inferSchema=True)
-    #Primeiro, limpamos os dados
-    df_limpo = limpeza_dados(df)
-    # Agora, fazemos a conversão
-    df_novo = modifica_moeda(df_limpo)
-    #Inserindo no mysql
+
+    #Limpando os valores duplicados;
+    df = dropa_duplicado(df)
+    # tratando os dados ausentes;
+    df = trata_dados_ausentes(df)
+    # Agora, fazemos a conversão;
+    df_novo = modifica_moeda(df)
+    #Inserindo no mysql;
     df_novo.write.jdbc(url=jdbc_url, table="sales_data", mode="append", properties=mysql_properties)
 
     #Lendo a tabela que acabamos de inserir para fazer o data quality e comparar o número de linhas com o da ingestão: 
